@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class InputManager : ScriptableObject, GameControls.ICommonActions, GameControls.ISideActions, GameControls.ITopdownActions
 {
 
+    // Events for other scripts to subscribe to
     public event Action<Vector2> TopdownMoveEvent;
     public event Action<float> SideMoveEvent;
     public event Action JumpBeginEvent;
@@ -26,8 +27,38 @@ public class InputManager : ScriptableObject, GameControls.ICommonActions, GameC
             gameControls.Topdown.SetCallbacks(this);
             gameControls.Side.SetCallbacks(this);
         }
-
     }
+
+    private void OnDisable()
+    {
+        DisableGameplayControl();
+    }
+
+    // Enable/Disable different control schemes
+
+    public void EnableTopdownControl()
+    {
+        gameControls.Topdown.Enable();
+        gameControls.Common.Enable();
+        gameControls.Side.Disable();
+    }
+
+    public void EnableSideControl()
+    {
+        gameControls.Side.Enable();
+        gameControls.Common.Enable();
+        gameControls.Topdown.Disable();
+    }
+
+    public void DisableGameplayControl()
+    {
+        gameControls.Topdown.Disable();
+        gameControls.Side.Disable();
+        gameControls.Common.Disable();
+    }
+
+    // Callback methods for each Input Action, inherited from each Action Map interface
+    // These methods interpret the context for each action and invoke the appropriate events
 
     public void OnInteract(InputAction.CallbackContext context)
     {
