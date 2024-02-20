@@ -82,7 +82,7 @@ public class InputManager : ScriptableObject, GameControls.ICommonActions, GameC
 
     public void OnSideMovement(InputAction.CallbackContext context)
     {
-        SideMoveEvent.Invoke(context.ReadValue<float>());
+        SideMoveEvent?.Invoke(context.ReadValue<float>());
     }
 
     public void OnTopdownMovement(InputAction.CallbackContext context)

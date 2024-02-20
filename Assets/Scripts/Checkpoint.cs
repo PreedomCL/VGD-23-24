@@ -8,7 +8,7 @@ public class Checkpoint : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            collision.GetComponent<DropperPlayerController>().SetCheckpoint(transform.position);
+            collision.GetComponent<SidePlayerController>().SetCheckpoint(transform.position);
         }
     }
 }

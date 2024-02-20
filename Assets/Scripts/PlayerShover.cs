@@ -12,7 +12,7 @@ public class PlayerShover : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            DropperPlayerController controller = collision.GetComponent<DropperPlayerController>();
+            SidePlayerController controller = collision.GetComponent<SidePlayerController>();
             if(controller != null)
             {
                 controller.addVelocity = addVelocity;
@@ -25,7 +25,7 @@ public class PlayerShover : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            DropperPlayerController controller = collision.GetComponent<DropperPlayerController>();
+            SidePlayerController controller = collision.GetComponent<SidePlayerController>();
             if (controller != null)
             {
                 controller.addVelocity += addAccel * Time.deltaTime;
@@ -37,7 +37,7 @@ public class PlayerShover : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            DropperPlayerController controller = collision.GetComponent<DropperPlayerController>();
+            SidePlayerController controller = collision.GetComponent<SidePlayerController>();
             if (controller != null)
             {
                 controller.addVelocity = 0;
